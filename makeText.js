@@ -9,6 +9,7 @@ const { deflate } = require('zlib');
 //will only take in two arguments, other arguments are ignored
 const args = process.argv.slice(2);
 
+//generates a string based on the words of the file
 function randomTxtFromFile(filename) {
     fs.readFile(filename, (err, data) =>{
         if (err) console.log(err)
@@ -18,6 +19,7 @@ function randomTxtFromFile(filename) {
     })
 }
 
+//generates a string based on the txt of a url
 function randomTxtFromURL(url) {
   axios.get(url)
     .then((res) => {
@@ -27,7 +29,7 @@ function randomTxtFromURL(url) {
     .catch((err) => console.log(err.message));
 }
 
-
+// text genearator will call one of two functions depending on what the first array value is
 function textGenerator(arr) {
     if (arr.length !== 2) return 'ERROR: Two arguments must be passed in';
 
